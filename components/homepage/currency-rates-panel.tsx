@@ -7,6 +7,8 @@ type RatesResponse = {
   base: string;
   date: string;
   rates: Record<string, number> | null;
+  checkedAt: string;
+  nextUpdate: string | null;
   source: string;
 };
 
@@ -27,12 +29,27 @@ export function CurrencyRatesPanel() {
     fetch("/api/rates")
       .then((response) => response.json())
       .then(setData)
-      .catch(() => setData({ base: "USD", date: "Unavailable", rates: null, source: "https://api.frankfurter.app" }));
+      .catch(() =>
+        setData({
+          base: "USD",
+          date: "Unavailable",
+          rates: null,
+          checkedAt: new Date().toISOString(),
+          nextUpdate: null,
+          source: "https://open.er-api.com"
+        })
+      );
   }, []);
 
   const rates = data?.rates;
   const entries = useMemo(() => Object.entries(rates ?? {}), [rates]);
   const max = Math.max(...entries.map(([, value]) => value), 1);
+  const checkedLabel = data?.checkedAt
+    ? new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(data.checkedAt))
+    : "Loading";
+  const nextLabel = data?.nextUpdate
+    ? new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(data.nextUpdate))
+    : null;
 
   return (
     <section className="rounded-xl border bg-card p-5 shadow-premium">
@@ -80,7 +97,8 @@ export function CurrencyRatesPanel() {
         ))}
       </div>
       <p className="mt-4 text-xs leading-5 text-muted-foreground">
-        Base: {data?.base ?? "USD"} · Date: {data?.date ?? "Loading"} · Source: Frankfurter public exchange-rate API.
+        Base: {data?.base ?? "USD"} · Market date: {data?.date ?? "Loading"} · Checked: {checkedLabel}
+        {nextLabel ? ` · Next update: ${nextLabel}` : ""} · Source: public exchange-rate API.
       </p>
     </section>
   );

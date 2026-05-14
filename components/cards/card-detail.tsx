@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 import { ProductCardVisual } from "@/components/cards/product-card-visual";
 import { Badge } from "@/components/ui/badge";
 import { CardProduct } from "@/lib/card-products";
+import { cardProductJsonLd } from "@/lib/seo";
 
 export function CardDetail({ card }: { card: CardProduct }) {
   const earnGuide = card.earnGuide ?? [];
@@ -10,6 +11,7 @@ export function CardDetail({ card }: { card: CardProduct }) {
 
   return (
     <article className="container-page py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(cardProductJsonLd(card)) }} />
       <div className="grid gap-10 lg:grid-cols-[420px_1fr] lg:items-start">
         <ProductCardVisual card={card} />
         <div>

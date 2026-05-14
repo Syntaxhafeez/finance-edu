@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: TopicPageProps) {
   return {
     title: `${category.title} Guides, Calculators, and Definitions`,
     description: category.intent,
-    alternates: { canonical: `/topics/${category.slug}` }
+    alternates: { canonical: category.slug === "business-finance" ? `/topics/${category.slug}` : `/${category.slug}` }
   };
 }
 

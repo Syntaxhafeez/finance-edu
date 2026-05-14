@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { CreditCardGrid } from "@/components/knowledge/credit-card-grid";
 import { GlobalSeoSection } from "@/components/knowledge/global-seo-section";
 import { LoanComparison } from "@/components/knowledge/loan-comparison";
+import { pageMetadata } from "@/lib/seo";
 
 const rows = [
   ["High-yield savings", "Emergency funds and short-term goals", "Low", "APY, FDIC/NCUA insurance, transfer limits, monthly fees"],
@@ -13,10 +14,12 @@ const rows = [
   ["Index ETF", "Long-term diversified investing", "Market risk", "Expense ratio, tracking, tax efficiency, holdings"]
 ];
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Compare Financial Products",
-  description: "Compare savings accounts, credit cards, loans, ETFs, insurance, and other financial products with practical criteria."
-};
+  description: "Compare savings accounts, credit cards, loans, ETFs, insurance, and other financial products with practical criteria.",
+  path: "/compare",
+  keywords: ["compare financial products", "compare credit cards", "compare loans", "compare ETFs", "compare insurance"]
+});
 
 export default function ComparePage() {
   return (
@@ -24,8 +27,7 @@ export default function ComparePage() {
       <Badge variant="trust">Comparison hub</Badge>
       <h1 className="mt-5 text-5xl font-semibold tracking-normal">Compare financial products</h1>
       <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
-        Product comparison pages should disclose methodology, avoid misleading rankings, and explain who each option is
-        best for.
+        Compare options by use case, total cost, risk, flexibility, and the habits required to use each product well.
       </p>
       <div className="mt-10 overflow-x-auto rounded-lg border">
         <table className="w-full text-sm">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Article } from "@/lib/content";
+import type { CardProduct } from "@/lib/card-products";
 import { categories, siteConfig } from "@/lib/site";
 
 export function absoluteUrl(path: string) {
@@ -187,6 +188,24 @@ export function collectionPageJsonLd({
         url: absoluteUrl(item.url)
       }))
     }
+  };
+}
+
+export function cardProductJsonLd(card: CardProduct) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    name: card.name,
+    description: `${card.bestFor} ${card.rewardStyle}.`,
+    url: absoluteUrl(`/${card.type === "Credit" ? "credit-cards" : "debit-cards"}/${card.slug}`),
+    provider: {
+      "@type": "Organization",
+      name: card.issuer,
+      url: card.sourceUrl
+    },
+    category: `${card.country} ${card.type} Card`,
+    feesAndCommissionsSpecification: card.annualFee,
+    termsOfService: card.sourceUrl
   };
 }
 

@@ -4,11 +4,14 @@ import { VisualFramework } from "@/components/knowledge/visual-framework";
 import { Badge } from "@/components/ui/badge";
 import { articles } from "@/lib/content";
 import { mortgageKnowledge } from "@/lib/finance-data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Mortgage Guide: Home Loans, Rates, APR, Down Payment, Closing Costs, and EMI",
-  description: "Understand home loans, mortgage affordability, fixed vs adjustable rates, APR, down payments, closing costs, and refinancing."
-};
+  description: "Understand home loans, mortgage affordability, fixed vs adjustable rates, APR, down payments, closing costs, and refinancing.",
+  path: "/mortgages",
+  keywords: ["mortgage guide", "home loans", "mortgage affordability", "down payment", "closing costs"]
+});
 
 export default function MortgagesPage() {
   return (

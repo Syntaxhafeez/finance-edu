@@ -3,12 +3,15 @@ import { Educational3DModel } from "@/components/knowledge/educational-3d-model"
 import { VisualFramework } from "@/components/knowledge/visual-framework";
 import { Badge } from "@/components/ui/badge";
 import { creditCards } from "@/lib/card-products";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Best Credit Cards by Use Case: Travel, Cashback, Student, Premium, India, USA, UK",
   description:
-    "Compare 25+ credit cards with visual card guides, benefits, pros, cons, criteria, usage strategy, and official source links."
-};
+    "Compare 25+ credit cards with visual card guides, benefits, pros, cons, criteria, usage strategy, and official source links.",
+  path: "/credit-cards",
+  keywords: ["best credit cards", "travel credit cards", "cashback credit cards", "India credit cards", "USA credit cards"]
+});
 
 export default function CreditCardsPage() {
   return (

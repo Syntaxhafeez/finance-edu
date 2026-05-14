@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@ledgerwise",
-    images: ["/twitter-image"]
+    images: ["/opengraph-image"]
   },
   robots: {
     index: true,
@@ -78,6 +79,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen font-sans">
+        <Script id="strip-extension-hydration-attrs" strategy="beforeInteractive">
+          {`
+            (function () {
+              var attrs = ["rtrvr-ls", "rtrvr-ro"];
+              function clean(root) {
+                if (!root || !root.querySelectorAll) return;
+                attrs.forEach(function (attr) {
+                  root.querySelectorAll("[" + attr + "]").forEach(function (node) {
+                    node.removeAttribute(attr);
+                  });
+                });
+                if (root.removeAttribute) {
+                  attrs.forEach(function (attr) { root.removeAttribute(attr); });
+                }
+              }
+              clean(document.documentElement);
+              new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                  if (mutation.type === "attributes" && attrs.indexOf(mutation.attributeName) !== -1) {
+                    mutation.target.removeAttribute(mutation.attributeName);
+                  }
+                });
+              }).observe(document.documentElement, { subtree: true, attributes: true, attributeFilter: attrs });
+            })();
+          `}
+        </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }} />
         <Header />

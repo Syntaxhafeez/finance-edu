@@ -3,6 +3,7 @@ import { EmiCalculator } from "@/components/calculators/emi-calculator";
 import { Educational3DModel } from "@/components/knowledge/educational-3d-model";
 import { GlobalSeoSection } from "@/components/knowledge/global-seo-section";
 import { Badge } from "@/components/ui/badge";
+import { pageMetadata } from "@/lib/seo";
 
 const tools = [
   "SIP calculator",
@@ -17,10 +18,12 @@ const tools = [
   "Savings goal planner"
 ];
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Financial Calculators and Money Tools",
-  description: "Use free finance calculators for compound interest, EMI, mortgage payments, retirement, inflation, taxes, and savings goals."
-};
+  description: "Use free finance calculators for compound interest, EMI, mortgage payments, retirement, inflation, taxes, and savings goals.",
+  path: "/calculators",
+  keywords: ["financial calculators", "compound interest calculator", "EMI calculator", "mortgage calculator"]
+});
 
 export default function CalculatorsPage() {
   return (

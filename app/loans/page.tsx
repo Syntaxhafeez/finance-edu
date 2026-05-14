@@ -5,11 +5,14 @@ import { LoanLifecycle } from "@/components/knowledge/loan-lifecycle";
 import { VisualFramework } from "@/components/knowledge/visual-framework";
 import { Badge } from "@/components/ui/badge";
 import { articles } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Loans Guide: Personal Loans, Home Loans, Student Loans, Auto Loans, APR, EMI, and Fees",
-  description: "Compare loan types with APR, fees, term, EMI/payment, total repayment, pros, cons, and payoff strategy."
-};
+  description: "Compare loan types with APR, fees, term, EMI/payment, total repayment, pros, cons, and payoff strategy.",
+  path: "/loans",
+  keywords: ["personal loans", "home loans", "APR", "EMI", "loan fees"]
+});
 
 export default function LoansPage() {
   return (
