@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 8%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 8%;
+  --primary: 166 80% 20%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 24% 96%;
+  --secondary-foreground: 222 47% 12%;
+  --muted: 210 20% 96%;
+  --muted-foreground: 215 16% 42%;
+  --accent: 207 73% 95%;
+  --accent-foreground: 209 80% 21%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214 24% 90%;
+  --input: 214 24% 90%;
+  --ring: 166 80% 28%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 220 31% 7%;
+  --foreground: 210 30% 96%;
+  --card: 222 30% 10%;
+  --card-foreground: 210 30% 96%;
+  --primary: 164 60% 48%;
+  --primary-foreground: 180 58% 8%;
+  --secondary: 220 22% 14%;
+  --secondary-foreground: 210 30% 96%;
+  --muted: 220 22% 14%;
+  --muted-foreground: 215 18% 68%;
+  --accent: 207 40% 18%;
+  --accent-foreground: 204 90% 88%;
+  --destructive: 0 63% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 18% 18%;
+  --input: 220 18% 18%;
+  --ring: 164 60% 48%;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.18);
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+table {
+  min-width: 640px;
+}
+
+.prose-finance {
+  @apply text-[1.04rem] leading-8 text-foreground;
+}
+
+.prose-finance h2 {
+  @apply mt-12 scroll-m-24 text-3xl font-semibold tracking-normal;
+}
+
+.prose-finance h3 {
+  @apply mt-9 scroll-m-24 text-2xl font-semibold tracking-normal;
+}
+
+.prose-finance p {
+  @apply mt-5 text-muted-foreground;
+}
+
+.prose-finance ul,
+.prose-finance ol {
+  @apply mt-5 space-y-3 pl-6 text-muted-foreground;
+}
+
+.prose-finance li {
+  @apply pl-1;
+}
+
+.prose-finance table {
+  @apply my-8 w-full overflow-hidden rounded-lg border text-sm;
+}
+
+.prose-finance th {
+  @apply bg-muted px-4 py-3 text-left font-semibold text-foreground;
+}
+
+.prose-finance td {
+  @apply border-t px-4 py-3 text-muted-foreground;
+}
+
+.finance-perspective {
+  perspective: 900px;
+}
+
+.finance-stack {
+  position: relative;
+  height: 11rem;
+  width: 9rem;
+  margin-inline: auto;
+  transform: rotateX(58deg) rotateZ(-34deg);
+  transform-style: preserve-3d;
+}
+
+.finance-card-scene {
+  perspective: 1200px;
+}
+
+.finance-card {
+  transform: rotateX(8deg) rotateY(-10deg);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .finance-card {
+    transform: none;
+  }
+}
+
+.finance-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35), transparent 58%);
+  transform: translateX(-45%) rotate(12deg);
+}
+
+.animate-rise {
+  animation: rise-in 460ms ease-out both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

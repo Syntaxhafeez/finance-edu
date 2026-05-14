@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  AUTHOR
+  REVIEWER
+  SEO_MANAGER
+  ANALYST
+  USER
+}
+
+enum ArticleStatus {
+  DRAFT
+  IN_REVIEW
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  role          Role      @default(USER)
+  bio           String?
+  credentials   String?
+  image         String?
+  articles      Article[] @relation("AuthorArticles")
+  reviews       Article[] @relation("ReviewerArticles")
+  comments      Comment[]
+  bookmarks     Bookmark[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  description String
+  parentId    String?
+  parent      Category? @relation("CategoryTree", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryTree")
+  articles    Article[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Article {
+  id              String        @id @default(cuid())
+  title           String
+  seoTitle        String
+  metaDescription String
+  slug            String        @unique
+  excerpt         String
+  body            String
+  status          ArticleStatus @default(DRAFT)
+  scheduledAt     DateTime?
+  publishedAt     DateTime?
+  updatedAt       DateTime      @updatedAt
+  authorId        String
+  reviewerId      String?
+  categoryId      String
+  author          User          @relation("AuthorArticles", fields: [authorId], references: [id])
+  reviewer        User?         @relation("ReviewerArticles", fields: [reviewerId], references: [id])
+  category        Category      @relation(fields: [categoryId], references: [id])
+  tags            Tag[]         @relation("ArticleTags")
+  faqs            FAQ[]
+  citations       Citation[]
+  internalLinks   InternalLink[] @relation("InternalLinksFrom")
+  inboundLinks    InternalLink[] @relation("InternalLinksTo")
+  qualityScore    QualityScore?
+  updateHistory   ContentUpdate[]
+  comments        Comment[]
+  bookmarks       Bookmark[]
+  adPlacements    AdPlacement[]
+  createdAt       DateTime      @default(now())
+
+  @@index([status, publishedAt])
+  @@index([categoryId])
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  articles Article[] @relation("ArticleTags")
+}
+
+model FAQ {
+  id        String  @id @default(cuid())
+  question  String
+  answer    String
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+}
+
+model Citation {
+  id        String  @id @default(cuid())
+  label     String
+  url       String
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+}
+
+model InternalLink {
+  id        String  @id @default(cuid())
+  anchor    String
+  fromId    String
+  toId      String
+  reason    String
+  from      Article @relation("InternalLinksFrom", fields: [fromId], references: [id], onDelete: Cascade)
+  to        Article @relation("InternalLinksTo", fields: [toId], references: [id], onDelete: Cascade)
+}
+
+model QualityScore {
+  id                 String  @id @default(cuid())
+  articleId          String  @unique
+  article            Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  readability        Int
+  originality        Int
+  sourceQuality      Int
+  eeat               Int
+  plagiarismRisk     Int
+  aiRepetitionRisk   Int
+  recommendations    Json
+  createdAt          DateTime @default(now())
+}
+
+model ContentUpdate {
+  id        String   @id @default(cuid())
+  articleId String
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  note      String
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  status    String   @default("ACTIVE")
+  source    String?
+  createdAt DateTime @default(now())
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  body      String
+  articleId String
+  userId    String
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  articleId String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, articleId])
+}
+
+model AdPlacement {
+  id        String   @id @default(cuid())
+  articleId String?
+  article   Article? @relation(fields: [articleId], references: [id], onDelete: SetNull)
+  slot      String
+  status    String   @default("DRAFT")
+  createdAt DateTime @default(now())
+}
