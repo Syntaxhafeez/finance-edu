@@ -26,10 +26,10 @@ import {
 } from "lucide-react";
 
 export const siteConfig = {
-  name: "LedgerWise",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://finance-edu.example",
+  name: "CashPivot",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cashpivot.online",
   description: "Clear, trusted finance education for everyday decisions and long-term wealth.",
-  editorialEmail: "editors@ledgerwise.com"
+  editorialEmail: "editors@cashpivot.online"
 };
 
 export const categories = [

@@ -1,4 +1,4 @@
-# LedgerWise Finance Education Platform
+# CashPivot Finance Education Platform
 
 A production-shaped Next.js App Router finance education platform focused on SEO authority, readability, trust signals, AdSense readiness, calculators, and scalable content operations.
 

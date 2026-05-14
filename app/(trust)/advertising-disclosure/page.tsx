@@ -5,7 +5,7 @@ export default function AdvertisingDisclosurePage() {
     <div className="container-page max-w-4xl py-12">
       <h1 className="text-5xl font-semibold tracking-normal">Advertising disclosure</h1>
       <p className="mt-6 text-lg leading-8 text-muted-foreground">
-        LedgerWise may earn compensation from ads, affiliate links, sponsored links, or product comparison modules.
+        CashPivot may earn compensation from ads, affiliate links, sponsored links, or product comparison modules.
         Editorial content remains independent, balanced, and written for reader understanding.
       </p>
       <div className="mt-10 grid gap-5">

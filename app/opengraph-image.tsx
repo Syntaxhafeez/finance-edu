@@ -40,7 +40,7 @@ export default function Image() {
           >
             L
           </div>
-          <div style={{ fontSize: 48, fontWeight: 750 }}>LedgerWise</div>
+          <div style={{ fontSize: 48, fontWeight: 750 }}>CashPivot</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 76, lineHeight: 1.02, fontWeight: 780, maxWidth: 920 }}>

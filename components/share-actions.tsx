@@ -20,9 +20,9 @@ export function ShareActions({ title }: { title: string }) {
   }
 
   function save() {
-    const savedArticles = JSON.parse(window.localStorage.getItem("ledgerwise-saved") ?? "[]") as string[];
+    const savedArticles = JSON.parse(window.localStorage.getItem("cashpivot-saved") ?? "[]") as string[];
     const next = Array.from(new Set([...savedArticles, window.location.pathname]));
-    window.localStorage.setItem("ledgerwise-saved", JSON.stringify(next));
+    window.localStorage.setItem("cashpivot-saved", JSON.stringify(next));
     setSaved(true);
   }
 

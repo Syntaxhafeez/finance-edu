@@ -1,11 +1,11 @@
-export const metadata = { title: "About LedgerWise" };
+export const metadata = { title: "About CashPivot" };
 
 export default function AboutPage() {
   return (
     <div className="container-page max-w-3xl py-12">
-      <h1 className="text-5xl font-semibold tracking-normal">About LedgerWise</h1>
+      <h1 className="text-5xl font-semibold tracking-normal">About CashPivot</h1>
       <p className="mt-6 text-lg leading-8 text-muted-foreground">
-        LedgerWise is a finance education publisher built around clarity, source quality, and practical decision
+        CashPivot is a finance education publisher built around clarity, source quality, and practical decision
         support. Our content system separates education from advice, records review status, and keeps update history
         visible.
       </p>
