@@ -20,12 +20,15 @@ import { ContextualAd } from "@/components/monetization/contextual-ad";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { articles, getArticleBySlug } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Insurance Guide: Life, Health, Auto, Home, Travel, Claims, and Company Comparison",
   description:
-    "A detailed insurance education hub covering life, health, auto, home, travel, business insurance, company comparison, claims, exclusions, and country-specific checks."
-};
+    "A detailed insurance education hub covering life, health, auto, home, travel, business insurance, company comparison, claims, exclusions, and country-specific checks.",
+  path: "/insurance",
+  keywords: ["insurance guide", "health insurance", "term life insurance", "auto insurance", "insurance company comparison"]
+});
 
 const insuranceTypes = [
   {
@@ -377,7 +380,7 @@ export default function InsurancePage() {
       <section className="mt-14 rounded-lg border bg-card p-5 sm:p-7">
         <div className="flex items-center gap-2 text-sm font-semibold text-primary">
           <FileSearch className="h-4 w-4" />
-          Claim readiness
+          Claim preparation
         </div>
         <h2 className="mt-3 text-3xl font-semibold tracking-normal">What to do before and during a claim</h2>
         <div className="mt-7 grid gap-4 lg:grid-cols-2">

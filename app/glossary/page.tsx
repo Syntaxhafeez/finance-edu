@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { expandedGlossary } from "@/lib/finance-data";
+import { pageMetadata } from "@/lib/seo";
 
 const terms = [
   ["APR", "Annual percentage rate, including interest and certain loan costs."],
@@ -9,10 +10,12 @@ const terms = [
   ["Liquidity", "How quickly an asset can be converted into cash without large price impact."]
 ];
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Finance Glossary and Dictionary",
-  description: "Plain-English definitions of finance, banking, investing, credit, tax, and economics terms."
-};
+  description: "Plain-English definitions of finance, banking, investing, credit, tax, and economics terms.",
+  path: "/glossary",
+  keywords: ["finance glossary", "finance dictionary", "investing terms", "banking terms"]
+});
 
 export default function GlossaryPage() {
   const allTerms = [...terms, ...expandedGlossary];

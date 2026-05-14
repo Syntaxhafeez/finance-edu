@@ -3,12 +3,15 @@ import { ComplianceSection } from "@/components/knowledge/compliance-section";
 import { GlobalSeoSection } from "@/components/knowledge/global-seo-section";
 import { Badge } from "@/components/ui/badge";
 import { regions } from "@/lib/international";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "International Finance Education by Country",
   description:
-    "Country-aware finance education for the USA, India, UK, EU, and global readers with local currencies, regulator context, and useful examples."
-};
+    "Country-aware finance education for the USA, India, UK, EU, and global readers with local currencies, regulator context, and useful examples.",
+  path: "/regions",
+  keywords: ["international finance education", "India finance", "USA finance", "UK finance", "global finance"]
+});
 
 export default function RegionsPage() {
   return (

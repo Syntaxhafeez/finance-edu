@@ -1,10 +1,13 @@
 import { NewsletterForm } from "@/components/newsletter-form";
 import { Badge } from "@/components/ui/badge";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "LedgerWise Newsletter",
-  description: "Join a weekly finance education newsletter with market explainers, updated guides, calculators, and editor picks."
-};
+  description: "Join a weekly finance education newsletter with market explainers, updated guides, calculators, and editor picks.",
+  path: "/newsletter",
+  keywords: ["finance newsletter", "money newsletter", "personal finance email"]
+});
 
 export default function NewsletterPage() {
   return (
