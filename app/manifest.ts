@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "LedgerWise",
-    short_name: "LedgerWise",
+    name: "CashPivot",
+    short_name: "CashPivot",
     description: "Clear finance education, calculators, and practical money guides.",
     start_url: "/",
     display: "standalone",

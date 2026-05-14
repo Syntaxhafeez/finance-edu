@@ -8,15 +8,15 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://finance-edu.example"),
-  applicationName: "LedgerWise",
-  authors: [{ name: "LedgerWise Editorial Team", url: "https://finance-edu.example/about" }],
-  creator: "LedgerWise Media",
-  publisher: "LedgerWise Media",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://cashpivot.online"),
+  applicationName: "CashPivot",
+  authors: [{ name: "CashPivot Editorial Team", url: "https://cashpivot.online/about" }],
+  creator: "CashPivot Media",
+  publisher: "CashPivot Media",
   category: "finance education",
   title: {
-    default: "LedgerWise - Clear Finance Education, Calculators, and Expert Guides",
-    template: "%s | LedgerWise"
+    default: "CashPivot - Clear Finance Education, Calculators, and Expert Guides",
+    template: "%s | CashPivot"
   },
   description:
     "A premium finance education platform with expert-reviewed guides, calculators, glossary definitions, market explainers, and practical money tools.",
@@ -35,18 +35,18 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "LedgerWise - Clear Finance Education, Calculators, and Expert Guides",
+    title: "CashPivot - Clear Finance Education, Calculators, and Expert Guides",
     description:
       "Expert-reviewed finance guides, calculators, glossary definitions, market explainers, and practical money tools.",
     url: "/",
-    siteName: "LedgerWise",
+    siteName: "CashPivot",
     type: "website",
     locale: "en_US",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "LedgerWise finance education" }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "CashPivot finance education" }]
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@ledgerwise",
+    creator: "@cashpivot",
     images: ["/opengraph-image"]
   },
   robots: {

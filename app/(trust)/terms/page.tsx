@@ -5,7 +5,7 @@ export default function TermsPage() {
     <div className="container-page max-w-3xl py-12">
       <h1 className="text-5xl font-semibold tracking-normal">Terms and conditions</h1>
       <p className="mt-6 text-lg leading-8 text-muted-foreground">
-        LedgerWise provides educational information only. Use of the platform does not create an advisor, broker,
+        CashPivot provides educational information only. Use of the platform does not create an advisor, broker,
         attorney, accountant, or fiduciary relationship.
       </p>
       <div className="prose-finance mt-8">

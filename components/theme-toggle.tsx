@@ -9,7 +9,7 @@ export function ThemeToggle() {
   const isDark = theme === "dark";
 
   useEffect(() => {
-    const stored = window.localStorage.getItem("ledgerwise-theme") as "light" | "dark" | null;
+    const stored = window.localStorage.getItem("cashpivot-theme") as "light" | "dark" | null;
     const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     const initial = stored ?? preferred;
     setThemeState(initial);
@@ -18,7 +18,7 @@ export function ThemeToggle() {
 
   function setTheme(nextTheme: "light" | "dark") {
     setThemeState(nextTheme);
-    window.localStorage.setItem("ledgerwise-theme", nextTheme);
+    window.localStorage.setItem("cashpivot-theme", nextTheme);
     document.documentElement.classList.toggle("dark", nextTheme === "dark");
   }
 

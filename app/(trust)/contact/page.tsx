@@ -6,7 +6,7 @@ export default function ContactPage() {
       <h1 className="text-5xl font-semibold tracking-normal">Contact</h1>
       <p className="mt-6 text-lg leading-8 text-muted-foreground">
         For corrections, partnership questions, expert review inquiries, or accessibility feedback, email
-        editors@ledgerwise.com.
+        editors@cashpivot.online.
       </p>
       <div className="mt-10 grid gap-5">
         {[

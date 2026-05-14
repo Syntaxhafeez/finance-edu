@@ -30,7 +30,7 @@ export default function HomePage() {
               Clear money decisions start with serious financial literacy.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              LedgerWise combines expert-reviewed guides, calculators, glossary explainers, regional context, and clear
+              CashPivot combines expert-reviewed guides, calculators, glossary explainers, regional context, and clear
               comparison tools for readers who want useful answers without noise.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

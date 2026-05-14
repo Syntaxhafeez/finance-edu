@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "LedgerWise Newsletter",
+  title: "CashPivot Newsletter",
   description: "Join a weekly finance education newsletter with market explainers, updated guides, calculators, and editor picks.",
   path: "/newsletter",
   keywords: ["finance newsletter", "money newsletter", "personal finance email"]

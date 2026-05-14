@@ -8,11 +8,11 @@ export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(!window.localStorage.getItem("ledgerwise-cookie-choice"));
+    setVisible(!window.localStorage.getItem("cashpivot-cookie-choice"));
   }, []);
 
   function choose(value: "essential" | "all") {
-    window.localStorage.setItem("ledgerwise-cookie-choice", value);
+    window.localStorage.setItem("cashpivot-cookie-choice", value);
     setVisible(false);
   }
 

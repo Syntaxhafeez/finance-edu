@@ -97,8 +97,7 @@ export function CurrencyRatesPanel() {
         ))}
       </div>
       <p className="mt-4 text-xs leading-5 text-muted-foreground">
-        Base: {data?.base ?? "USD"} · Market date: {data?.date ?? "Loading"} · Checked: {checkedLabel}
-        {nextLabel ? ` · Next update: ${nextLabel}` : ""} · Source: public exchange-rate API.
+        Base: {data?.base ?? "USD"} · Market date: {data?.date ?? "Loading"}
       </p>
     </section>
   );

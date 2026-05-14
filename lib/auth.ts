@@ -2,11 +2,11 @@ import { cookies } from "next/headers";
 
 export async function getCurrentUser() {
   const cookieStore = await cookies();
-  const session = cookieStore.get("ledgerwise_session");
+  const session = cookieStore.get("cashpivot_session");
   if (!session) return null;
   return {
     id: "demo-user",
-    email: "editor@ledgerwise.com",
+    email: "editor@cashpivot.online",
     role: "ADMIN"
   };
 }

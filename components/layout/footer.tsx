@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 flex flex-col gap-2 border-t pt-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>Copyright {new Date().getFullYear()} LedgerWise Media. All rights reserved.</p>
+          <p>Copyright {new Date().getFullYear()} CashPivot Media. All rights reserved.</p>
           <p>Clear finance education for readers in multiple regions.</p>
         </div>
       </div>

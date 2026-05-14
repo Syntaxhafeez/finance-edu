@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function BrandLogo() {
   return (
-    <Link href="/" className="flex min-w-0 items-center gap-3 tracking-normal" aria-label="LedgerWise home">
+    <Link href="/" className="flex min-w-0 items-center gap-3 tracking-normal" aria-label="CashPivot home">
       <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-[#071816] shadow-sm ring-1 ring-emerald-400/25 dark:bg-emerald-400">
         <span className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/12 to-transparent dark:from-white/30" />
         <svg viewBox="0 0 48 48" aria-hidden="true" className="relative h-9 w-9">
@@ -34,7 +34,7 @@ export function BrandLogo() {
           />
         </svg>
       </span>
-      <span className="truncate text-2xl font-semibold tracking-normal">LedgerWise</span>
+      <span className="truncate text-2xl font-semibold tracking-normal">CashPivot</span>
     </Link>
   );
 }
