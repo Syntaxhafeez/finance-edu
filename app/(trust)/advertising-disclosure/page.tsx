@@ -1,4 +1,10 @@
-export const metadata = { title: "Advertising Disclosure" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Advertising Disclosure",
+  description: "How CashPivot handles advertising, affiliate relationships, editorial independence, and product mentions.",
+  path: "/advertising-disclosure"
+});
 
 export default function AdvertisingDisclosurePage() {
   return (

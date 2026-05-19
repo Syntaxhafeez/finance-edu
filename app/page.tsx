@@ -16,7 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CardComparisonGrid } from "@/components/cards/card-comparison-grid";
 import { creditCards, debitCards } from "@/lib/card-products";
 import { articles, pillarPages } from "@/lib/content";
-import { categories } from "@/lib/site";
+import { categories, categoryPath } from "@/lib/site";
 
 const trustSignals = ["Expert-reviewed", "Cited sources", "Updated histories", "Clear explanations"];
 export default function HomePage() {
@@ -72,7 +72,7 @@ export default function HomePage() {
             return (
               <Link
                 key={category.slug}
-                href={`/topics/${category.slug}`}
+                href={categoryPath(category.slug)}
                 className="rounded-lg border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-premium"
               >
                 <Icon className="h-5 w-5 text-primary" />

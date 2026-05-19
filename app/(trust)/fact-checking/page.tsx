@@ -1,4 +1,10 @@
-export const metadata = { title: "Fact-Checking Process" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Fact-Checking Process",
+  description: "How CashPivot reviews high-impact finance guides for accuracy, sourcing, terminology, and reader safety.",
+  path: "/fact-checking"
+});
 
 export default function FactCheckingPage() {
   return (

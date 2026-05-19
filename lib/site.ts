@@ -61,6 +61,10 @@ export const categories = [
   { title: "Economics", slug: "economics", icon: Scale, intent: "Inflation, rates, labor, GDP, and policy explained." }
 ] as const;
 
+export function categoryPath(slug: string) {
+  return slug === "business-finance" ? `/topics/${slug}` : `/${slug}`;
+}
+
 export const primaryNav = [
   { title: "Guides", href: "/learn/beginner-guides" },
   { title: "Calculators", href: "/calculators" },

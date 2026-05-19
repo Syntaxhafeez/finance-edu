@@ -1,4 +1,10 @@
-export const metadata = { title: "Terms and Conditions" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Terms and Conditions",
+  description: "Terms and conditions for using CashPivot's finance education content, tools, and website.",
+  path: "/terms"
+});
 
 export default function TermsPage() {
   return (

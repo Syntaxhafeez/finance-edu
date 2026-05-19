@@ -3,10 +3,19 @@ import { Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { searchSite } from "@/lib/search";
+import { pageMetadata } from "@/lib/seo";
 
 export const metadata = {
-  title: "Search Finance Guides, Cards, Calculators, and Tools",
-  description: "Search finance education guides, credit cards, debit cards, calculators, glossary terms, and regional content."
+  ...pageMetadata({
+    title: "Search Finance Guides, Cards, Calculators, and Tools",
+    description:
+      "Search finance education guides, credit cards, debit cards, calculators, glossary terms, and regional content.",
+    path: "/search"
+  }),
+  robots: {
+    index: false,
+    follow: true
+  }
 };
 
 export default function SearchPage({ searchParams }: { searchParams: { q?: string } }) {

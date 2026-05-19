@@ -1,4 +1,10 @@
-export const metadata = { title: "Accessibility Statement" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Accessibility Statement",
+  description: "CashPivot's accessibility commitment for finance education pages, tools, and reader support.",
+  path: "/accessibility"
+});
 
 export default function AccessibilityPage() {
   return (

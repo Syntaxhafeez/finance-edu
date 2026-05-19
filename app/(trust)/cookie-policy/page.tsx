@@ -1,6 +1,11 @@
 import { ComplianceSection } from "@/components/knowledge/compliance-section";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Cookie Policy" };
+export const metadata = pageMetadata({
+  title: "Cookie Policy",
+  description: "How CashPivot may use cookies, analytics, consent preferences, and related privacy controls.",
+  path: "/cookie-policy"
+});
 
 export default function CookiePolicyPage() {
   return (

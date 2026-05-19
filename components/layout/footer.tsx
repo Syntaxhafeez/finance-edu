@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand-logo";
-import { categories, primaryNav, siteConfig } from "@/lib/site";
+import { categories, categoryPath, primaryNav, siteConfig } from "@/lib/site";
 
 const trustLinks = [
   ["About", "/about"],
@@ -42,7 +42,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold">Top Categories</h3>
             <div className="mt-3 grid gap-2 text-sm text-muted-foreground">
               {categories.slice(0, 7).map((category) => (
-                <Link key={category.slug} href={`/topics/${category.slug}`} className="hover:text-foreground">
+                <Link key={category.slug} href={categoryPath(category.slug)} className="hover:text-foreground">
                   {category.title}
                 </Link>
               ))}

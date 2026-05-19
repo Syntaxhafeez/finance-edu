@@ -19,10 +19,10 @@ const mainLinks = [
 const moreLinks = [
   { title: "Debit Cards", href: "/debit-cards" },
   { title: "Mortgages", href: "/mortgages" },
-  { title: "Investing", href: "/topics/investing" },
-  { title: "Banking", href: "/topics/banking" },
-  { title: "Insurance", href: "/topics/insurance" },
-  { title: "Taxes", href: "/topics/taxes" },
+  { title: "Investing", href: "/investing" },
+  { title: "Banking", href: "/banking" },
+  { title: "Insurance", href: "/insurance" },
+  { title: "Taxes", href: "/taxes" },
   { title: "Newsletter", href: "/newsletter" }
 ];
 

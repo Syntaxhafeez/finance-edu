@@ -1,4 +1,10 @@
-export const metadata = { title: "About CashPivot" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "About CashPivot",
+  description: "Learn about CashPivot's finance education mission, editorial standards, audience, and independence.",
+  path: "/about"
+});
 
 export default function AboutPage() {
   return (

@@ -3,12 +3,15 @@ import { Educational3DModel } from "@/components/knowledge/educational-3d-model"
 import { VisualFramework } from "@/components/knowledge/visual-framework";
 import { Badge } from "@/components/ui/badge";
 import { debitCards } from "@/lib/card-products";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Best Debit Cards and Bank Cards: USA, India, UK",
   description:
-    "Compare debit cards and bank account cards with visual guides, pros, cons, fees, usage strategy, and safety criteria."
-};
+    "Compare debit cards and bank account cards with visual guides, pros, cons, fees, usage strategy, and safety criteria.",
+  path: "/debit-cards",
+  keywords: ["best debit cards", "bank cards", "debit card comparison", "ATM access", "spending controls"]
+});
 
 export default function DebitCardsPage() {
   return (

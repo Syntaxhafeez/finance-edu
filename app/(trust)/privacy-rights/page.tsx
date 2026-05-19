@@ -1,6 +1,11 @@
 import { ComplianceSection } from "@/components/knowledge/compliance-section";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = { title: "Privacy Rights" };
+export const metadata = pageMetadata({
+  title: "Privacy Rights",
+  description: "Understand privacy rights and data choices for CashPivot readers in supported regions.",
+  path: "/privacy-rights"
+});
 
 export default function PrivacyRightsPage() {
   return (
