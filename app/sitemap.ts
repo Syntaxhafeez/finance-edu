@@ -2,33 +2,10 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/lib/content";
 import { allCards } from "@/lib/card-products";
 import { regions } from "@/lib/international";
-import { categories, siteConfig } from "@/lib/site";
+import { categories, categoryPath, siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const topLevelCategorySlugs = new Set([
-    "accounting-basics",
-    "banking",
-    "budgeting",
-    "cryptocurrency",
-    "economics",
-    "etfs",
-    "finance-news",
-    "financial-literacy",
-    "insurance",
-    "investing",
-    "mutual-funds",
-    "passive-income",
-    "personal-finance",
-    "real-estate-finance",
-    "retirement",
-    "saving-money",
-    "side-hustles",
-    "startup-finance",
-    "stock-market",
-    "taxes",
-    "trading"
-  ]);
   const staticPages = [
     "",
     "/calculators",
@@ -52,9 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
     "/disclaimer"
   ];
-  const categoryUrls = categories.map((category) =>
-    topLevelCategorySlugs.has(category.slug) ? `/${category.slug}` : `/topics/${category.slug}`
-  );
+  const staticPageSet = new Set(staticPages);
+  const categoryUrls = categories.map((category) => categoryPath(category.slug)).filter((page) => !staticPageSet.has(page));
   const learnPages = ["/learn/beginner-guides", "/learn/advanced-finance-guides"];
 
   return [

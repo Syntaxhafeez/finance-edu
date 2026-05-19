@@ -1,4 +1,10 @@
-export const metadata = { title: "Privacy Policy" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Privacy Policy",
+  description: "How CashPivot may collect, use, protect, and disclose information for newsletters, analytics, cookies, and site operations.",
+  path: "/privacy"
+});
 
 export default function PrivacyPage() {
   return (

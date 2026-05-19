@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { TopicPageContent } from "@/components/topic-page-content";
 import { getCategory } from "@/lib/content";
-import { categories } from "@/lib/site";
+import { categories, categoryPath } from "@/lib/site";
 
 type TopicPageProps = { params: Promise<{ slug: string }> };
 
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: TopicPageProps) {
   return {
     title: `${category.title} Guides, Calculators, and Definitions`,
     description: category.intent,
-    alternates: { canonical: category.slug === "business-finance" ? `/topics/${category.slug}` : `/${category.slug}` }
+    alternates: { canonical: categoryPath(category.slug) }
   };
 }
 
@@ -24,5 +24,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const { slug } = await params;
   const category = getCategory(slug);
   if (!category) notFound();
+  const canonicalPath = categoryPath(slug);
+  if (canonicalPath !== `/topics/${slug}`) permanentRedirect(canonicalPath);
   return <TopicPageContent slug={slug} />;
 }

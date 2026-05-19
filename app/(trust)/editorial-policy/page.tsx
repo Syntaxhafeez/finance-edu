@@ -1,4 +1,10 @@
-export const metadata = { title: "Editorial Policy" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Editorial Policy",
+  description: "CashPivot's editorial standards for accuracy, independence, updates, sources, and reader-first finance education.",
+  path: "/editorial-policy"
+});
 
 export default function EditorialPolicyPage() {
   return (

@@ -2,7 +2,7 @@ import { allCards } from "@/lib/card-products";
 import { articles } from "@/lib/content";
 import { expandedGlossary } from "@/lib/finance-data";
 import { regions } from "@/lib/international";
-import { categories } from "@/lib/site";
+import { categories, categoryPath } from "@/lib/site";
 
 export type SearchItem = {
   title: string;
@@ -29,7 +29,7 @@ export const searchIndex: SearchItem[] = [
   })),
   ...categories.map((category) => ({
     title: category.title,
-    href: `/topics/${category.slug}`,
+    href: categoryPath(category.slug),
     type: "Topic",
     description: category.intent,
     keywords: `${category.title} ${category.intent}`

@@ -1,4 +1,10 @@
-export const metadata = { title: "Disclaimer" };
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Disclaimer",
+  description: "Important educational, financial, tax, legal, and product limitations for CashPivot content.",
+  path: "/disclaimer"
+});
 
 export default function DisclaimerPage() {
   return (

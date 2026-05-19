@@ -1,12 +1,15 @@
 import { BusinessFinanceVisual } from "@/components/knowledge/business-finance-visual";
 import { LoanLifecycle } from "@/components/knowledge/loan-lifecycle";
 import { Badge } from "@/components/ui/badge";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Business Finance Guide: Cash Flow, Margins, Runway, Debt, and Working Capital",
   description:
-    "Learn business finance visually with cash flow, gross margin, operating expenses, working capital, runway, debt service, and funding decisions."
-};
+    "Learn business finance visually with cash flow, gross margin, operating expenses, working capital, runway, debt service, and funding decisions.",
+  path: "/topics/business-finance",
+  keywords: ["business finance", "cash flow", "runway", "working capital", "debt service"]
+});
 
 export default function BusinessFinanceTopicPage() {
   return (

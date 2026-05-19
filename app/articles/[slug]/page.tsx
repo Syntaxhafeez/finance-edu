@@ -31,6 +31,7 @@ import {
   getRelatedArticles
 } from "@/lib/content";
 import { articleJsonLd, articleMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { categoryPath } from "@/lib/site";
 
 type ArticlePageProps = { params: Promise<{ slug: string }> };
 
@@ -143,7 +144,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           __html: JSON.stringify(
             breadcrumbJsonLd([
               { name: "Home", url: "/" },
-              { name: category?.title ?? "Articles", url: `/topics/${article.category}` },
+              { name: category?.title ?? "Articles", url: categoryPath(article.category) },
               { name: article.title, url: `/articles/${article.slug}` }
             ])
           )
