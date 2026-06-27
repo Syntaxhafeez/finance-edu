@@ -19,7 +19,7 @@ export default function AccessibilityPage() {
           ["Readable typography", "Large body text, clear contrast, short sections, descriptive headings, and scannable tables."],
           ["Keyboard access", "Navigation, forms, cookie controls, and calculator inputs should be reachable without a mouse."],
           ["Visual alternatives", "Charts and 3D visuals use text explanations so the educational meaning is not visual-only."],
-          ["Feedback", "Readers can contact editors@cashpivot.online with accessibility barriers or readability problems."]
+          ["Feedback", "Readers can contact contact@cashpivot.online with accessibility barriers or readability problems."]
         ].map(([title, copy]) => (
           <section key={title} className="rounded-lg border bg-card p-5">
             <h2 className="text-xl font-semibold">{title}</h2>

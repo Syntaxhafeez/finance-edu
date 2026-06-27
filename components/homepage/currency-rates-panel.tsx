@@ -1,16 +1,5 @@
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-
-type RatesResponse = {
-  base: string;
-  date: string;
-  rates: Record<string, number> | null;
-  checkedAt: string;
-  nextUpdate: string | null;
-  source: string;
-};
+import { getUsdRates } from "@/lib/rates";
 
 const labels: Record<string, string> = {
   INR: "India",
@@ -22,32 +11,14 @@ const labels: Record<string, string> = {
   SGD: "Singapore"
 };
 
-export function CurrencyRatesPanel() {
-  const [data, setData] = useState<RatesResponse | null>(null);
-
-  useEffect(() => {
-    fetch("/api/rates")
-      .then((response) => response.json())
-      .then(setData)
-      .catch(() =>
-        setData({
-          base: "USD",
-          date: "Unavailable",
-          rates: null,
-          checkedAt: new Date().toISOString(),
-          nextUpdate: null,
-          source: "https://open.er-api.com"
-        })
-      );
-  }, []);
-
-  const rates = data?.rates;
-  const entries = useMemo(() => Object.entries(rates ?? {}), [rates]);
+export async function CurrencyRatesPanel() {
+  const data = await getUsdRates();
+  const entries = Object.entries(data.rates ?? {});
   const max = Math.max(...entries.map(([, value]) => value), 1);
-  const checkedLabel = data?.checkedAt
+  const checkedLabel = data.checkedAt
     ? new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(data.checkedAt))
-    : "Loading";
-  const nextLabel = data?.nextUpdate
+    : "Unavailable";
+  const nextLabel = data.nextUpdate
     ? new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short" }).format(new Date(data.nextUpdate))
     : null;
 
@@ -97,7 +68,8 @@ export function CurrencyRatesPanel() {
         ))}
       </div>
       <p className="mt-4 text-xs leading-5 text-muted-foreground">
-        Base: {data?.base ?? "USD"} · Market date: {data?.date ?? "Loading"}
+        Base: {data.base} · Market date: {data.date} · Checked: {checkedLabel}
+        {nextLabel ? ` · Next update: ${nextLabel}` : ""} · Source: {data.source}
       </p>
     </section>
   );

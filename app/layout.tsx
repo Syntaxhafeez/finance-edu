@@ -3,14 +3,14 @@ import Script from "next/script";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { ScrollToTop } from "@/components/scroll-to-top";
-import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { aiSearchOptimizationJsonLd, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://cashpivot.online"),
+  metadataBase: new URL(siteConfig.url),
   applicationName: "CashPivot",
-  authors: [{ name: "CashPivot Editorial Team", url: "https://cashpivot.online/about" }],
+  authors: [{ name: "CashPivot Editorial Team", url: `${siteConfig.url}/about` }],
   creator: "CashPivot Media",
   publisher: "CashPivot Media",
   category: "finance education",
@@ -63,7 +63,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
     types: {
-      "application/rss+xml": "/feed.xml"
+      "application/rss+xml": "/feed.xml",
+      "text/plain": [
+        { url: "/llms.txt", title: "LLM discovery" },
+        { url: "/ai.txt", title: "AI search summary" }
+      ]
     },
     languages: {
       "en-US": "/regions/united-states",
@@ -107,8 +111,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aiSearchOptimizationJsonLd()) }} />
         <Header />
-        <ScrollToTop />
         <main>{children}</main>
         <Footer />
         <CookieConsent />

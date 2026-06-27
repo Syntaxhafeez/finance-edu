@@ -1,8 +1,8 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ArrowRight, CheckCircle2, Newspaper, Sparkles } from "lucide-react";
 import { AnimatedRise } from "@/components/animated-rise";
 import { ArticleCard } from "@/components/article-card";
-import { CreditCardGrid } from "@/components/knowledge/credit-card-grid";
 import { Educational3DModel } from "@/components/knowledge/educational-3d-model";
 import { GlobalSeoSection } from "@/components/knowledge/global-seo-section";
 import { LoanComparison } from "@/components/knowledge/loan-comparison";
@@ -13,15 +13,40 @@ import { SectionHeading } from "@/components/section-heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CardComparisonGrid } from "@/components/cards/card-comparison-grid";
 import { creditCards, debitCards } from "@/lib/card-products";
 import { articles, pillarPages } from "@/lib/content";
 import { categories, categoryPath } from "@/lib/site";
+import { webPageJsonLd } from "@/lib/seo";
+
+const CardComparisonGrid = dynamic(() => import("@/components/cards/card-comparison-grid").then((mod) => mod.CardComparisonGrid), {
+  loading: () => <CardComparisonFallback />
+});
+
+export const metadata = {
+  title: "CashPivot - Finance Education, Credit Card Guides, Calculators, and Money Tools",
+  description:
+    "CashPivot helps readers compare credit cards, understand loans, use finance calculators, learn investing basics, and make clearer money decisions with expert-reviewed guides.",
+  alternates: {
+    canonical: "/"
+  }
+};
 
 const trustSignals = ["Expert-reviewed", "Cited sources", "Updated histories", "Clear explanations"];
 export default function HomePage() {
+  const featuredArticles = articles.slice(0, 9);
+  const featuredCreditCards = creditCards.slice(0, 10);
+  const featuredDebitCards = debitCards.slice(0, 4);
+  const homepageJsonLd = webPageJsonLd({
+    name: "CashPivot finance education homepage",
+    description:
+      "Finance education, credit card comparisons, calculators, glossary explainers, and practical money guides.",
+    url: "/",
+    about: ["financial literacy", "credit cards", "loans", "investing", "budgeting", "banking"]
+  });
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }} />
       <section className="border-b bg-[radial-gradient(circle_at_top_left,hsl(var(--accent)),transparent_34%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--secondary)/.35))]">
         <div className="container-page grid items-center gap-12 py-14 lg:grid-cols-[0.95fr_1.05fr] xl:py-18">
           <AnimatedRise>
@@ -88,7 +113,7 @@ export default function HomePage() {
         <div className="container-page">
           <SectionHeading eyebrow="Featured guides" title="Useful articles with summaries, examples, and citations" />
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {articles.map((article, index) => (
+            {featuredArticles.map((article, index) => (
               <ArticleCard key={article.slug} article={article} priority={index === 0} />
             ))}
           </div>
@@ -110,7 +135,7 @@ export default function HomePage() {
             improving trust.
           </SectionHeading>
           <div className="mt-10">
-            <CardComparisonGrid cards={creditCards} title="Featured credit cards with visual guides" />
+            <CardComparisonGrid cards={featuredCreditCards} title="Featured credit cards with visual guides" />
           </div>
         </div>
       </section>
@@ -121,7 +146,7 @@ export default function HomePage() {
           separation, card controls, and fee awareness.
         </SectionHeading>
         <div className="mt-10">
-          <CardComparisonGrid cards={debitCards} title="Featured debit cards with visual guides" />
+          <CardComparisonGrid cards={featuredDebitCards} title="Featured debit cards with visual guides" />
         </div>
       </section>
 
@@ -162,5 +187,18 @@ export default function HomePage() {
         </Card>
       </section>
     </>
+  );
+}
+
+function CardComparisonFallback() {
+  return (
+    <div className="rounded-lg border bg-card p-6">
+      <div className="h-7 w-64 max-w-full rounded bg-secondary" />
+      <div className="mt-4 h-4 w-full max-w-2xl rounded bg-secondary" />
+      <div className="mt-8 grid gap-4">
+        <div className="h-32 rounded-lg bg-secondary" />
+        <div className="h-32 rounded-lg bg-secondary" />
+      </div>
+    </div>
   );
 }

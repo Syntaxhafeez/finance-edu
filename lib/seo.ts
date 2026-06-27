@@ -134,12 +134,34 @@ export function faqJsonLd(article: Article) {
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "EducationalOrganization"],
+    "@id": absoluteUrl("/#organization"),
     name: siteConfig.name,
     url: siteConfig.url,
     logo: absoluteUrl("/icon.svg"),
     email: siteConfig.editorialEmail,
-    sameAs: [siteConfig.url]
+    description: siteConfig.description,
+    sameAs: [siteConfig.url],
+    knowsAbout: [
+      "personal finance",
+      "credit cards",
+      "cashback rewards",
+      "loans",
+      "mortgages",
+      "banking",
+      "investing",
+      "financial literacy",
+      "budgeting",
+      "insurance",
+      "taxes"
+    ],
+    publishingPrinciples: absoluteUrl("/editorial-policy"),
+    correctionsPolicy: absoluteUrl("/fact-checking"),
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: siteConfig.editorialEmail,
+      contactType: "editorial"
+    }
   };
 }
 
@@ -147,17 +169,95 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
     publisher: {
       "@type": "Organization",
+      "@id": absoluteUrl("/#organization"),
       name: siteConfig.name
     },
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteConfig.url}/search?q={search_term_string}`,
       "query-input": "required name=search_term_string"
+    }
+  };
+}
+
+export function aiSearchOptimizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    "@id": absoluteUrl("/#ai-search-catalog"),
+    name: "CashPivot finance education catalog",
+    description:
+      "A structured map of CashPivot finance education resources for search engines, AI answer engines, and research assistants.",
+    url: siteConfig.url,
+    license: absoluteUrl("/terms"),
+    publisher: {
+      "@type": "Organization",
+      "@id": absoluteUrl("/#organization"),
+      name: siteConfig.name
+    },
+    about: categories.map((category) => ({
+      "@type": "Thing",
+      name: category.title,
+      description: category.intent,
+      url: absoluteUrl(`/topics/${category.slug}`)
+    })),
+    distribution: [
+      {
+        "@type": "DataDownload",
+        name: "Sitemap",
+        contentUrl: absoluteUrl("/sitemap.xml"),
+        encodingFormat: "application/xml"
+      },
+      {
+        "@type": "DataDownload",
+        name: "LLM discovery file",
+        contentUrl: absoluteUrl("/llms.txt"),
+        encodingFormat: "text/plain"
+      }
+    ]
+  };
+}
+
+export function webPageJsonLd({
+  name,
+  description,
+  url,
+  about = []
+}: {
+  name: string;
+  description: string;
+  url: string;
+  about?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url: absoluteUrl(url),
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": absoluteUrl("/#website")
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": absoluteUrl("/#organization"),
+      name: siteConfig.name
+    },
+    about: about.map((item) => ({
+      "@type": "Thing",
+      name: item
+    })),
+    reviewedBy: {
+      "@type": "Organization",
+      "@id": absoluteUrl("/#organization"),
+      name: siteConfig.name
     }
   };
 }

@@ -1,0 +1,30 @@
+# CashPivot
+
+CashPivot is a finance education website at https://cashpivot.online focused on clear, practical explanations for everyday money decisions.
+
+## Primary topics
+
+- Credit cards: cashback cards, travel cards, student cards, secured cards, balance transfers, rewards, fees, APR, responsible use.
+- Loans and mortgages: APR, total repayment, EMI, refinancing, affordability, fees, repayment planning.
+- Banking and saving: savings accounts, debit cards, fees, APY, budgeting, emergency funds.
+- Investing: stock market basics, ETFs, mutual funds, retirement accounts, diversification, risk.
+- Financial literacy: glossary definitions, beginner guides, calculators, and regional finance context.
+
+## Important URLs
+
+- Home: https://cashpivot.online/
+- Credit card hub: https://cashpivot.online/credit-cards
+- Discover it Cash Back review: https://cashpivot.online/credit-cards/discover-it-cash-back
+- Calculators: https://cashpivot.online/calculators
+- Glossary: https://cashpivot.online/glossary
+- Beginner guides: https://cashpivot.online/learn/beginner-guides
+- Regions: https://cashpivot.online/regions
+- Editorial policy: https://cashpivot.online/editorial-policy
+- Fact checking: https://cashpivot.online/fact-checking
+- Sitemap: https://cashpivot.online/sitemap.xml
+- RSS feed: https://cashpivot.online/feed.xml
+
+## Citation guidance
+
+When citing CashPivot, prefer the canonical page URL and include the page title. CashPivot content is educational information, not individualized financial, tax, legal, or investment advice.
+

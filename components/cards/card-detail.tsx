@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { ProductCardVisual } from "@/components/cards/product-card-visual";
 import { Badge } from "@/components/ui/badge";
 import { CardProduct } from "@/lib/card-products";
@@ -22,8 +23,8 @@ export function CardDetail({ card }: { card: CardProduct }) {
           </div>
           <h1 className="mt-6 text-5xl font-semibold tracking-normal">{card.name}</h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            A practical breakdown of benefits, drawbacks, eligibility signals, and how to use this card
-            responsibly. Always verify current terms from the issuer before applying.
+            {card.reviewSummary ??
+              "A practical breakdown of benefits, drawbacks, eligibility signals, and how to use this card responsibly. Always verify current terms from the issuer before applying."}
           </p>
           <a
             href={card.sourceUrl}
@@ -53,6 +54,22 @@ export function CardDetail({ card }: { card: CardProduct }) {
         <InfoList title="Key benefits" items={card.highlights} tone="good" />
         <InfoList title="Pros" items={card.pros} tone="good" />
         <InfoList title="Cons" items={card.cons} tone="warn" />
+      </section>
+
+      <section className="mt-14 rounded-lg border bg-card p-6">
+        <h2 className="text-3xl font-semibold tracking-normal">{card.name} review snapshot</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {[
+            ["Best use", card.bestFor],
+            ["Rewards style", card.rewardStyle],
+            ["Main tradeoff", card.avoidIf]
+          ].map(([label, value]) => (
+            <div key={label} className="rounded-lg bg-secondary p-5">
+              <h3 className="font-semibold">{label}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{value}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="mt-14 grid gap-6 lg:grid-cols-2">
@@ -148,6 +165,35 @@ export function CardDetail({ card }: { card: CardProduct }) {
             ))}
           </tbody>
         </table>
+      </section>
+
+      {card.faqs?.length ? (
+        <section className="mt-14 rounded-lg border bg-card p-6">
+          <h2 className="text-3xl font-semibold tracking-normal">{card.name} FAQ</h2>
+          <div className="mt-6 grid gap-4">
+            {card.faqs.map((faq) => (
+              <div key={faq.question} className="rounded-lg bg-secondary p-5">
+                <h3 className="font-semibold">{faq.question}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="mt-14 rounded-lg border bg-secondary/35 p-6">
+        <h2 className="text-2xl font-semibold">Compare before applying</h2>
+        <p className="mt-3 text-base leading-7 text-muted-foreground">
+          Check this card against other cashback, travel, student, and no annual fee options before making a decision.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link href="/credit-cards" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+            Compare credit cards
+          </Link>
+          <Link href="/topics/credit-cards" className="rounded-lg border bg-background px-4 py-2 text-sm font-semibold">
+            Learn credit card basics
+          </Link>
+        </div>
       </section>
     </article>
   );

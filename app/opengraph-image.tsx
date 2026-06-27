@@ -38,7 +38,7 @@ export default function Image() {
               fontWeight: 800
             }}
           >
-            L
+            C
           </div>
           <div style={{ fontSize: 48, fontWeight: 750 }}>CashPivot</div>
         </div>

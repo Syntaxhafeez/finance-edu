@@ -25,11 +25,19 @@ import {
   WalletCards
 } from "lucide-react";
 
+function canonicalizeSiteUrl(url: string) {
+  return url
+    .trim()
+    .replace(/^http:\/\//, "https://")
+    .replace("https://www.cashpivot.online", "https://cashpivot.online")
+    .replace(/\/$/, "");
+}
+
 export const siteConfig = {
   name: "CashPivot",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://cashpivot.online",
+  url: canonicalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL ?? "https://cashpivot.online"),
   description: "Clear, trusted finance education for everyday decisions and long-term wealth.",
-  editorialEmail: "editors@cashpivot.online"
+  editorialEmail: "contact@cashpivot.online"
 };
 
 export const categories = [

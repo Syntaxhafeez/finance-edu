@@ -9,6 +9,9 @@ export type CardProduct = {
   annualFee: string;
   creditProfile: string;
   rewardStyle: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  reviewSummary?: string;
   highlights: string[];
   pros: string[];
   cons: string[];
@@ -17,6 +20,7 @@ export type CardProduct = {
   earnGuide?: string[];
   redeemGuide?: string[];
   bestSpendingPlaces?: string[];
+  faqs?: { question: string; answer: string }[];
   avoidIf: string;
   sourceUrl: string;
   color: string;
@@ -254,11 +258,69 @@ export const creditCards: CardProduct[] = [
     annualFee: "No annual fee",
     creditProfile: "Fair to good credit may qualify",
     rewardStyle: "Rotating category cashback",
-    highlights: ["Quarterly bonus categories", "No annual fee", "Cashback match style intro feature", "Useful credit tools"],
-    pros: ["High category upside", "No annual fee", "Good for active optimizers"],
-    cons: ["Activation required", "Category caps", "Discover acceptance can vary abroad"],
-    criteria: ["You track quarterly categories", "You can shift spending", "You prefer cashback"],
-    howToUse: ["Activate categories", "Use until cap", "Pair with flat-rate card"],
+    seoTitle: "Discover it Cash Back Review: Benefits, Rewards, Pros and Cons",
+    seoDescription:
+      "Discover it Cash Back card review covering rotating rewards, benefits, annual fee, pros and cons, best use cases, and how to use cashback categories well.",
+    reviewSummary:
+      "The Discover it Cash Back card is strongest for people who want a no annual fee cashback card and are willing to activate rotating bonus categories each quarter. It is less useful for set-and-forget spending because category caps and activation rules matter.",
+    highlights: [
+      "Rotating quarterly cashback categories",
+      "No annual fee",
+      "Intro cashback match style feature",
+      "Useful credit tools and account alerts"
+    ],
+    pros: [
+      "Strong cashback upside in eligible rotating categories",
+      "No annual fee keeps the card simple to hold long term",
+      "Useful for building a cashback setup with a flat-rate backup card"
+    ],
+    cons: [
+      "Quarterly activation is required for bonus categories",
+      "Bonus categories usually have spending caps",
+      "Discover acceptance can vary outside the United States"
+    ],
+    criteria: [
+      "You will activate Discover it Cash Back categories each quarter",
+      "You can shift grocery, gas, dining, PayPal, Amazon, or other eligible spending when those categories appear",
+      "You want cashback rewards and can pay the statement balance in full"
+    ],
+    howToUse: [
+      "Activate the current Discover cashback category as soon as it opens",
+      "Use the card until the quarterly category cap stops adding extra value",
+      "Pair it with a flat-rate cashback card for purchases outside the bonus category"
+    ],
+    earnGuide: [
+      "Check the Discover cashback calendar before each quarter starts and activate the new category.",
+      "Move only planned purchases into the active category so the reward does not create extra spending.",
+      "Track the quarterly cap and switch to a flat-rate card after the bonus category is no longer the best option."
+    ],
+    redeemGuide: [
+      "Redeem cashback as statement credit, direct deposit, or another available option that is easy to value.",
+      "Do not treat cashback as a reason to carry a balance; interest can erase the benefit quickly.",
+      "Review redemption options after statement close so rewards do not sit unused."
+    ],
+    bestSpendingPlaces: ["Active quarterly category", "Groceries when eligible", "Gas or dining when eligible", "Online checkout when eligible"],
+    faqs: [
+      {
+        question: "Is Discover it Cash Back a good cashback card?",
+        answer:
+          "It can be a good cashback card if you activate quarterly categories, spend in those categories naturally, and pay the statement balance in full."
+      },
+      {
+        question: "Does Discover it Cash Back have an annual fee?",
+        answer: "The Discover it Cash Back card is positioned as a no annual fee cashback card."
+      },
+      {
+        question: "What are the main Discover it Cash Back benefits?",
+        answer:
+          "The main benefits are rotating cashback categories, no annual fee, an intro cashback match style feature, and account tools that can help responsible card use."
+      },
+      {
+        question: "Who should avoid Discover it Cash Back?",
+        answer:
+          "It is a weaker fit for people who do not want to activate categories, who want fixed rewards on every purchase, or who may carry credit card debt."
+      }
+    ],
     avoidIf: "You want set-and-forget rewards.",
     sourceUrl: "https://www.discover.com/credit-cards/cash-back/it-card.html",
     color: "from-orange-700 to-amber-400"
